@@ -1,0 +1,19 @@
+# Template file for 'honoka672-dwm'
+pkgname=honoka672-dwm
+version=6.2
+revision=1
+hostmakedepends="git"
+makedepends="libX11-devel libXft-devel libXinerama-devel libXrender-devel freetype-devel"
+short_desc="Honoka672's fork of dwm"
+maintainer="Honoka672 <honoka672@gmail.com>"
+license="MIT"
+homepage="https://github.com/honoka672/dwm"
+
+do_fetch() {
+	git clone --depth=1 ${homepage} ${wrksrc}
+}
+
+do_install() {
+	make PREFIX=/usr DESTDIR=${DESTDIR} clean install
+	vlicense LICENSE
+}
